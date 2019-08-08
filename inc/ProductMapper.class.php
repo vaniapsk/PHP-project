@@ -2,7 +2,7 @@
 //TODO: Temporary search class. Will replase with Ajax. 
 class ProductMapper{
 
-    //Search the product table using the given search term(s) - SANL July 26, 2018.
+    //Search the product table using the given search term(s) 
     static function prodSearch($searchTerm){
         $query = "SELECT * FROM products;";
         $products = array();
@@ -24,7 +24,7 @@ class ProductMapper{
         return $products;
     }
 
-    //Get the info of a specific product based on its id - SANL July 28, 2018
+    //Get the info of a specific product based on its id 
     static function getProdById($id){
         $query = "SELECT * FROM products WHERE pid='$id';";
         $bindParams = array();
@@ -35,7 +35,7 @@ class ProductMapper{
         return $prod[0];
     }
 
-    //Fetch the products corresponding to the given manufacturer administrator. - SANL July 29, 2018
+    //Fetch the products corresponding to the given manufacturer administrator. 
     static function getProdsByManu($manu){
         $query = "SELECT * FROM products WHERE manufacturer=:manu;";
         $bindParams = ['manu'=>$manu];

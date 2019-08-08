@@ -2,7 +2,7 @@
 
 class Manufacturer{
 
-    //Add a product to the array of products offered by this manufacturer. If the item is already in the array, do not included it. - SANL July 26, 2018
+    //Add a product to the array of products offered by this manufacturer. If the item is already in the array, do not included it. 
     function addProduct(Product $product){
         $inArray = false;
 

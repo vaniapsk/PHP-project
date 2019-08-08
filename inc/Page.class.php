@@ -1,10 +1,5 @@
 <?php
 
-
-// https://webdesignerhut.com/pass-data-with-ajax-to-a-php-file/
-//https://stackoverflow.com/questions/3897396/can-a-table-row-expand-and-close
-
-
 class Page{
     static public $title = "CSIS 3280: Final Project";
 
@@ -81,14 +76,6 @@ class Page{
     }
 
     static function prodAddMessage($prod){
-        //var_dump($prod);
-        
-        /*<div class="alert alert-info fade in">
-            <a href="#" class="close" data-dismiss="alert">&times;</a>
-            The '.$prod->pname.' was successfully added to your cart.
-        </div>
-        echo '<div class="card-panel #fff9c4 yellow lighten-4"> The '.$prod->pname.' was successfully added to your cart.</div>';
-        */
 
         echo '<div style="margin-top: 25px" class="alert alert-info fade in">
         <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -127,14 +114,7 @@ class Page{
     }
 
     static function SubmitOrder(){
-        
-        // <button id="submitOrder">Order</button>
-        // <script>
-        //     var btn = document.getElementById('submitOrder');
-        //     btn.addEventListener('click', function() {
-        //         document.location.href = 'SubmitOrder.php';
-        //     });
-        // </script>
+
         echo '<div class="alert alert-info fade in">
         <a href="#" class="close" data-dismiss="alert">&times;</a>
         <p>Please enter the shipping address and verify your order is correct.</p></div>';
@@ -185,6 +165,8 @@ class Page{
 	    </div>
         <?php
     }
+
+    //SignUp form
     public static function showSignUp(){
     ?>    
         <div class="container" style="margin-top: 100px;">
@@ -218,6 +200,7 @@ class Page{
     <?php
     }
 
+    //Form will show up depending on the user type
     static function prodAddForm(){
         ?> 
         <div  class="alert alert-info fade in">
@@ -252,9 +235,7 @@ class Page{
         $products = ProductMapper::getProdsByManu($manufacturer);
 
         ?>
-        
-        
-        
+         
             <?php  
         if($products == NULL){
             ?> 
@@ -291,7 +272,7 @@ class Page{
     
     
 
-    //Print a table with the available products. If a search term is provided, print the corresponding table. - SANL July 26, 2018
+    //Print a table with the available products. If a search term is provided, print the corresponding table.
     static function offeredProd($searchTerm = null){
         $prodCount = 0;
         $products = ProductMapper::prodSearch($searchTerm);
@@ -315,7 +296,7 @@ class Page{
 
             echo '</tr>';
 
-            // this is the hidden row that will be shown when the click event happen- Vania Oliveira July 30, 2018
+            // Hidden row that will be shown when the click event happen
             echo '<tr>
             <td colspan="5" style="border:none" >
                 <div id="info'.$prodCount.'" style="display: none;">
@@ -338,7 +319,7 @@ class Page{
     }
     
 
-    //Print out the cutomer's cart based on the info stored in the session. - SANL July 28, 2018
+    //Print out the cutomer's cart based on the info stored in the session.
     static function printCart($cart){
         $prodCount = 0;
 
@@ -346,7 +327,7 @@ class Page{
         <table class="table table-striped" style="margin-top:2%">  
             <tr><th>Name</th><th>Type</th><th>Description</th><th>Manufacturer</th><th>Price</th><th>Quantity</th><th></th></tr>
         <?php
-        foreach($cart as $prod){ //Where prod is the array with the product id and quantity - SANL July 28, 2018
+        foreach($cart as $prod){ //Where prod is the array with the product id and quantity
             $product = ProductMapper::getProdById($prod[0]);
             $man = ManufacturertMapper::manufacturers($product->manufacturer);
             $prodCount++;
@@ -362,7 +343,7 @@ class Page{
 
 
 
-            // this is the hidden row that will be shown when the click event happen- Vania Oliveira July 30, 2018
+            // Hidden row that will be shown when the click event happen
             echo '<tr>
             <td colspan="5" style="border:none" >
                 <div id="info'.$prodCount.'" style="display: none;">
@@ -383,7 +364,7 @@ class Page{
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
         <script>
 
-       //this jquery will detect a click event in a link and will show the hidden roll - Vania Oliveira July 30, 2018
+       //jQuery to detect a click event in a link and will show the hidden roll
          $("a").click(function(event) {
             //var clickedItem= "#"+event.target.id;
             var hiddenRow = "#info"+event.target.id.substr(9,1);;
@@ -397,7 +378,7 @@ class Page{
 
         
 
-        //this jquery will show the form for the manufacturer - Vania Oliveira July 30, 2018
+        //jQuery to show the form for the manufacturer
         $(document).ready(function(){
             $('#userType').change(function(){
                 var selectedUsertype = $('#userType').val();

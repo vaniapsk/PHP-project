@@ -35,17 +35,4 @@ if(!empty($_POST["search"])){
 
 Page::footer();
 
-// $pdo = new PDOAgent("mysql", DBUSER, DBPASSWORD, "localhost", DB);
-// $pdo->connect();
-// $bindParams = array();
-// $query = "SELECT * FROM products WHERE pname LIKE '%de%' OR type LIKE '%de%' OR pdescription LIKE '%de%';";
-// //$query = "SELECT * FROM products;";
-// $results = $pdo->query($query, $bindParams);
-// $pdo->disconnect();
-// var_dump($results);
-
-// Page::header();
-// Page::searchForm();
-// Page::offeredProd();
-// Page::footer();
 ?>

@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['username'] = $result[0]->username;
 
         if($userType == "customer"){
-            $_SESSION['cart'] = array();//Create a "cart" slot in the session to store product id's and quantities - SANL 28, July 2018.
+            $_SESSION['cart'] = array();//Create a "cart" slot in the session to store product id's and quantities 
             header("location:Customer.php");
         } else{
             header("location:Manufacturer.php");

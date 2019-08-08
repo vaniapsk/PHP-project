@@ -2,7 +2,7 @@
 //TODO: Temporary search class. Will replase with Ajax. 
 class ManufacturertMapper{
 
-    //Search the product table using the given search term(s) - SANL July 26, 2018.
+    //Search the product table using the given search term(s)
     static function manufacturers($manufacturer){
             $query = "SELECT * FROM manufacturers WHERE admin='$manufacturer';";
             $bindParams = array();

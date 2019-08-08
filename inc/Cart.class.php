@@ -1,12 +1,12 @@
 <?php
 
 class Cart{
-    //Add a product id to the cart slot in the session. If the item is new to the cart, set quantity to 1. Increase by 1 otherwise. - SANL July 28, 2018
+    //Add a product id to the cart slot in the session. If the item is new to the cart, set quantity to 1. Increase by 1 otherwise. 
     static function addProduct($pid){
         $inCart = false;
 
         if(count($_SESSION['cart']) != 0){
-            foreach($_SESSION['cart'] as &$prod){ //prod is the 2 element array with the product id and its quantity. - SANL July 28, 2018
+            foreach($_SESSION['cart'] as &$prod){ //prod is the 2 element array with the product id and its quantity. 
                 if($prod[0] == $pid){
                     $prod[1]++;
                     $inCart = true;
@@ -22,7 +22,7 @@ class Cart{
         return $_SESSION['cart'];
     }
 
-    //Remove the cart slot in the session corresponding to the given product id. - SANL July 28, 2018
+    //Remove the cart slot in the session corresponding to the given product id. 
     static function removeProduct($pid){
         for($i = 0; $i < count($_SESSION['cart']); ++$i){
             if($_SESSION['cart'][$i][0] == $pid){
@@ -32,7 +32,7 @@ class Cart{
         }
     }
 
-    //Updates the cart table with all the products ordered. - SANL July 28, 2018
+    //Updates the cart table with all the products ordered.
     static function submitCart($addrs){ 
         $query = "INSERT INTO cart VALUES (:buyer, :product, :address, :quantity );";
         $pdo = new PDOAgent("mysql", DBUSER, DBPASSWORD, "localhost", DB);
@@ -44,7 +44,6 @@ class Cart{
         }
         $pdo->disconnect();
 
-        //$_SESSION['cart'] = array(); empties the cart after the order is placed.
     }
 
 }

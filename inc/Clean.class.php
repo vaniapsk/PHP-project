@@ -1,7 +1,7 @@
 <?php
 
 class Clean{
-    //a function to clean input term and remove any additional spaces
+    //Clean input term and remove any additional spaces
     static function cleanTerm($term){
         $cleanTerm = trim($term," ");
         $cleanTerm = htmlentities($cleanTerm);
