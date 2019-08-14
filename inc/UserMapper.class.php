@@ -8,8 +8,21 @@ class UserMapper{
         $dba = new PDOAgent("mysql",DBUSER,DBPASSWORD,"localhost",DB);  
         $dba->connect();
         
+        $example = $_POST['textfield'];
+        $example = strip_tags($example);
+        $example = mysql_real_escape_string($example);
+        
+        
+        
         $username = $postdata['username'];
+        $username = strip_tags($username);
+        $username =  mysql_real_escape_string($username);
+        
         $password = $postdata['password'];
+        $password = strip_tags($password);
+        $password =  mysql_real_escape_string($password);
+        
+        
         //Setup the query()
         $query = "SELECT * FROM users WHERE username = :username AND password = :password";
          //Setup the bind parameters
@@ -53,11 +66,20 @@ class UserMapper{
 
         $query2 = "INSERT INTO manufacturers (admin, mname, mdescription) 
         VALUES (:admin, :mname, :mdescription)";
+        
+        $username = $postdata['username'];
+        $username = strip_tags($username);
+        $username =  mysql_real_escape_string($username);
+        
+        $password = $postdata['password'];
+        $password = strip_tags($password);
+        $password =  mysql_real_escape_string($password);
+        
 
         //Setup the bind parameters
-        $bindParams = ['username' => $postdata['username'],'password'=>$postdata['password'], 'type'=>$postdata['type']];
+        $bindParams = ['username' => $username,'password'=>$password, 'type'=>$postdata['type']];
         //Pull the resultset
-        $bindParams2 = ['admin' => $postdata['username'],'mname'=>$postdata['mname'], 'mdescription'=>$postdata['mdescription']];
+        $bindParams2 = ['admin' => $username,'mname'=>$postdata['mname'], 'mdescription'=>$postdata['mdescription']];
 
         var_dump($bindParams2);
         $result = $dba->query($query, $bindParams);
